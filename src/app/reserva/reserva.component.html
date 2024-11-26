@@ -1,0 +1,46 @@
+<div class="reserva-container">
+  <h1>Reservar Salón</h1>
+
+  <!-- Mostrar el salón seleccionado -->
+  <p><strong>Salón Seleccionado:</strong> {{ salon?.nombre }}</p>
+  <p><strong>Capacidad del Salón:</strong> {{ salon?.capacidad }} personas</p>
+
+  <!-- Formulario de reserva -->
+  <form (ngSubmit)="reservar()">
+    <label for="nombre">Nombre:</label>
+    <input id="nombre" [(ngModel)]="nombre" name="nombre" type="text" required />
+    <p *ngIf="errorFormulario && !nombre.trim()" class="error">{{ errorFormulario }}</p>
+
+    <label for="email">Correo Electrónico:</label>
+    <input id="email" [(ngModel)]="email" name="email" type="email" required />
+    <p *ngIf="errorFormulario && !email.trim()" class="error">{{ errorFormulario }}</p>
+
+    <label for="telefono">Teléfono:</label>
+    <input id="telefono" [(ngModel)]="telefono" name="telefono" type="tel" required />
+    <p *ngIf="errorFormulario && !telefono.trim()" class="error">{{ errorFormulario }}</p>
+
+    <label for="fecha">Fecha del Evento:</label>
+    <input
+      id="fecha"
+      [(ngModel)]="fecha"
+      name="fecha"
+      type="date"
+      (change)="validarFecha()"
+      required
+    />
+    <p *ngIf="errorFecha" class="error">{{ errorFecha }}</p>
+
+    <label for="asistentes">Número de Asistentes:</label>
+    <input
+      id="asistentes"
+      [(ngModel)]="asistentes"
+      name="asistentes"
+      type="number"
+      (input)="validarAsistentes()"
+      required
+    />
+    <p *ngIf="errorAsistentes" class="error">{{ errorAsistentes }}</p>
+
+    <button type="submit" class="submit-button">Confirmar Reserva</button>
+  </form>
+</div>

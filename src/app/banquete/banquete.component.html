@@ -1,0 +1,30 @@
+<div class="banquetes-container">
+    <h1>Gestión de Banquetes</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Tipo</th>
+          <th>Menú</th>
+          <th>Cantidad de Personas</th>
+          <th>Costo</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let banquete of banquetes">
+          <td>{{ banquete.id }}</td>
+          <td>{{ banquete.tipo }}</td>
+          <td>{{ banquete.menu }}</td>
+          <td>{{ banquete.cantidad_personas }}</td>
+          <td>{{ banquete.costo | currency:'CLP':'symbol':'1.0-0' }}</td>
+          <td>
+            <button (click)="editarBanquete(banquete.id)">Editar</button>
+            <button (click)="eliminarBanquete(banquete.id)">Eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <button (click)="agregarBanquete()">Agregar Banquete</button>
+  </div>
+  
